@@ -6,7 +6,10 @@ import java.util.Date
 import java.time.*
 
 
-data class Search (val meta: Meta, val documents:Documents)
+data class Image(
+    val documents:ArrayList<Documents>,
+    val meta: Meta
+    )
 
 data class Meta(
     val total_count:Integer,
