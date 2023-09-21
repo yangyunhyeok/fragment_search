@@ -39,20 +39,11 @@ class SearchFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentSearchBinding.inflate(inflater, container, false)
-        return binding.root
+
         setupView()
         setupListeners()
-    }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-//        binding.btnSearch.setOnClickListener {
-//            var keyword: String
-//            keyword = binding.keyword.getText().toString()
-//            Log.d("test", "$keyword")
-//        }
-
+        return binding.root
     }
 
     private fun setupView() {
@@ -64,14 +55,13 @@ class SearchFragment : Fragment() {
 
     }
 
-    private fun setupListeners(){
+    private fun setupListeners() {
         binding.btnSearch.setOnClickListener {
             val keyWord = binding.keyword.text.toString()
             Log.d("test", "$keyWord")
-            if(keyWord.isNotEmpty()){
+            if (keyWord.isNotEmpty()) {
                 adaptor.clearItem()
                 fetchImageResults(keyWord)
-
             }
         }
     }
@@ -84,10 +74,10 @@ class SearchFragment : Fragment() {
                     response.body()?.meta?.let { meta ->
                         if (meta.total_count > 0) {
                             response.body()!!.documents.forEach { documents ->
-                            val title = documents.display_sitename
-                            val datetime = documents.datetime
-                            val url = documents.thumbnail_url
-                                Items.add(SearchResult(title,datetime,url))
+                                val title = documents.display_sitename
+                                val datetime = documents.datetime
+                                val url = documents.thumbnail_url
+                                Items.add(SearchResult(title, datetime, url))
                             }
                         }
                     }
@@ -95,12 +85,8 @@ class SearchFragment : Fragment() {
                     adaptor.notifyItemChanged()
                 }
 
-
                 override fun onFailure(call: Call<Image>, t: Throwable) {
-                    TODO("Not yet implemented")
                 }
-
-
             })
     }
 }
