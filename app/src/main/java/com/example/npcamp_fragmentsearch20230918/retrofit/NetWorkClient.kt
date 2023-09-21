@@ -16,7 +16,8 @@ object NetWorkClient {
 //            .baseUrl("https://dapi.kakao.com") // 도메인 주소
 //            .addConverterFactory(GsonConverterFactory.create()) // GSON을 사요아기 위해 ConverterFactory에 GSON 지정
 //            .build()
-    private const val Search_BASE_URL = "https://dapi.kakao.com/v2/search/image/"
+
+    private const val Search_BASE_URL = "https://dapi.kakao.com"
     val apiService: NetWorkInterface
         get() = instance.create(NetWorkInterface::class.java)
 

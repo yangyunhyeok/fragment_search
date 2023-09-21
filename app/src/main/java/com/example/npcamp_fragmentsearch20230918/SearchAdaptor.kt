@@ -23,6 +23,12 @@ class SearchAdaptor(private val mContext: Context) : RecyclerView.Adapter<Search
         val like = binding.like
         val layout: ConstraintLayout = binding.searchItem
 
+        init {
+            like.visibility = View.GONE
+            image.setOnClickListener(this)
+            layout.setOnClickListener(this)
+        }
+
         override fun onClick(v: View?) {
             val position = adapterPosition.takeIf { it != RecyclerView.NO_POSITION } ?: return
             val data = dataList[position]

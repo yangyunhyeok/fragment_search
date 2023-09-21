@@ -42,7 +42,6 @@ class SearchFragment : Fragment() {
 
         setupView()
         setupListeners()
-
         return binding.root
     }
 
@@ -67,7 +66,7 @@ class SearchFragment : Fragment() {
     }
 
     private fun fetchImageResults(keyWord: String) {
-        apiService.requestSearchImage("3f68eb5f972362fbf9416af7fbea96f5", keyWord, "recency", 1, 80)
+        apiService.requestSearchImage("KakaoAK 3f68eb5f972362fbf9416af7fbea96f5", keyWord, "recency", 1, 80)
             ?.enqueue(object : Callback<Image> {
                 @SuppressLint("SuspiciousIndentation")
                 override fun onResponse(call: Call<Image>, response: Response<Image>) {
@@ -77,6 +76,7 @@ class SearchFragment : Fragment() {
                                 val title = documents.display_sitename
                                 val datetime = documents.datetime
                                 val url = documents.thumbnail_url
+                                Log.d("test","$title,$datetime,$url")
                                 Items.add(SearchResult(title, datetime, url))
                             }
                         }
