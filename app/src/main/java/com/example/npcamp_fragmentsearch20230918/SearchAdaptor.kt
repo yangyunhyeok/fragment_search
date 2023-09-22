@@ -37,6 +37,12 @@ class SearchAdaptor(private val mContext: Context) : RecyclerView.Adapter<Search
             data.like = !data.like
             notifyItemChanged(position)
 
+            if(data.like){
+                (mContext as MainActivity).addLike(data)
+            }else{
+                (mContext as MainActivity).removeLike(data)
+            }
+            notifyItemChanged(position)
         }
     }
 
