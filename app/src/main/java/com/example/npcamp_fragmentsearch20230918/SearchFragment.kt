@@ -76,13 +76,14 @@ class SearchFragment : Fragment() {
                                 val title = documents.display_sitename
                                 val datetime = documents.datetime
                                 val url = documents.thumbnail_url
-                                Log.d("test","$title,$datetime,$url")
+//                                Log.d("test","$title,$datetime,$url")
                                 Items.add(SearchResult(title, datetime, url))
+                                Log.d("test","$Items")
                             }
                         }
                     }
                     adaptor.dataList = Items
-                    adaptor.notifyItemChanged()
+                    adaptor.notifyDataSetChanged() // 리사이클러뷰 업데이트
                 }
 
                 override fun onFailure(call: Call<Image>, t: Throwable) {

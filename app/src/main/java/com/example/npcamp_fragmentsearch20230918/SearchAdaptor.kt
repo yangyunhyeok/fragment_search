@@ -1,6 +1,7 @@
 package com.example.npcamp_fragmentsearch20230918
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -34,7 +35,7 @@ class SearchAdaptor(private val mContext: Context) : RecyclerView.Adapter<Search
             val data = dataList[position]
 
             data.like = !data.like
-
+            notifyItemChanged(position)
 
         }
     }
@@ -62,13 +63,9 @@ class SearchAdaptor(private val mContext: Context) : RecyclerView.Adapter<Search
         return dataList.size
     }
 
-    fun notifyItemChanged() {
-
-    }
-
     fun clearItem() {
         dataList.clear()
-        notifyItemChanged()
+        notifyDataSetChanged() // 리사이클러뷰 업데이트
     }
 
 
